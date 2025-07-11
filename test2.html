@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analyst Portfolio | Ultra Modern Design</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Space Grotesk for modern tech feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Space Grotesk', sans-serif;
+          background-color: #000000;
+          color: #e2e8f0;
+          overflow-x: hidden;
+          position: relative;
+      }
+
+      /* Animated gradient background */
+      .gradient-bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(125deg, #000428 0%, #004e92 50%, #000428 100%);
+          background-size: 400% 400%;
+          animation: gradient-shift 15s ease infinite;
+          z-index: -2;
+      }
+
+      @keyframes gradient-shift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+      }
+
+      /* Particle effect */
+      .particles {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          pointer-events: none;
+      }
+
+      .particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: rgba(255, 255, 255, 0.5);
+          border-radius: 50%;
+          animation: float-up 15s infinite linear;
+      }
+
+      @keyframes float-up {
+          0% {
+              transform: translateY(100vh) translateX(0);
+              opacity: 0;
+          }
+          10% {
+              opacity: 1;
+          }
+          90% {
+              opacity: 1;
+          }
+          100% {
+              transform: translateY(-10vh) translateX(100px);
+              opacity: 0;
+          }
+      }
+
+      /* Neon glow effects */
+      .neon-border {
+          position: relative;
+          background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(59, 130, 246, 0.1));
+          border-radius: 12px;
+          padding: 1px;
+      }
+
+      .neon-border::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-radius: 12px;
+          padding: 2px;
+          background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          opacity: 0.5;
+          animation: pulse-neon 3s ease-in-out infinite;
+      }
+
+      @keyframes pulse-neon {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 0.8; }
+      }
+
+      .neon-content {
+          background: rgba(15, 23, 42, 0.8);
+          backdrop-filter: blur(20px);
+          border-radius: 11px;
+          padding: 2rem;
+      }
+
+      /* Glitch effect for headings */
+      .glitch {
+          position: relative;
+          text-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+      }
+
+      .glitch::before,
+      .glitch::after {
+          content: attr(data-text);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+      }
+
+      .glitch::before {
+          animation: glitch-1 0.5s infinite;
+          color: #00ffff;
+          z-index: -1;
+      }
+
+      .glitch::after {
+          animation: glitch-2 0.5s infinite;
+          color: #ff00ff;
+          z-index: -2;
+      }
+
+      @keyframes glitch-1 {
+          0% { clip-path: inset(40% 0 61% 0); transform: translate(0); }
+          20% { clip-path: inset(92% 0 1% 0); transform: translate(-2px, 2px); }
+          40% { clip-path: inset(43% 0 1% 0); transform: translate(2px, -2px); }
+          60% { clip-path: inset(25% 0 58% 0); transform: translate(-2px, 2px); }
+          80% { clip-path: inset(54% 0 7% 0); transform: translate(2px, -2px); }
+          100% { clip-path: inset(58% 0 43% 0); transform: translate(0); }
+      }
+
+      @keyframes glitch-2 {
+          0% { clip-path: inset(50% 0 30% 0); transform: translate(0); }
+          20% { clip-path: inset(82% 0 1% 0); transform: translate(2px, -2px); }
+          40% { clip-path: inset(23% 0 1% 0); transform: translate(-2px, 2px); }
+          60% { clip-path: inset(35% 0 48% 0); transform: translate(2px, -2px); }
+          80% { clip-path: inset(64% 0 17% 0); transform: translate(-2px, 2px); }
+          100% { clip-path: inset(48% 0 53% 0); transform: translate(0); }
+      }
+
+      /* Holographic button */
+      .holo-btn {
+          position: relative;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #667eea 100%);
+          background-size: 400% 400%;
+          animation: holo-shift 3s ease infinite;
+          padding: 1rem 2rem;
+          border-radius: 9999px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          transition: all 0.3s ease;
+          overflow: hidden;
+      }
+
+      .holo-btn::before {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+          animation: shine 3s infinite;
+      }
+
+      @keyframes holo-shift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+      }
+
+      @keyframes shine {
+          0% { transform: rotate(0deg) translate(-200%, -200%); }
+          100% { transform: rotate(360deg) translate(200%, 200%); }
+      }
+
+      /* 3D Card tilt effect */
+      .tilt-card {
+          transform-style: preserve-3d;
+          transition: transform 0.3s ease;
+      }
+
+      .tilt-card:hover {
+          transform: rotateY(5deg) rotateX(5deg) translateZ(20px);
+      }
+
+      /* Cyberpunk grid */
+      .cyber-grid {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image:
+                  linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+          background-size: 50px 50px;
+          animation: grid-move 10s linear infinite;
+          z-index: -1;
+      }
+
+      @keyframes grid-move {
+          0% { transform: translate(0, 0); }
+          100% { transform: translate(50px, 50px); }
+      }
+
+      /* Loading animation for skills */
+      .skill-load {
+          animation: skill-fill 2s ease-out forwards;
+      }
+
+      @keyframes skill-fill {
+          0% { width: 0%; opacity: 0; }
+          100% { opacity: 1; }
+      }
+
+      /* Typewriter effect */
+      .typewriter {
+          overflow: hidden;
+          border-right: 3px solid #3b82f6;
+          white-space: nowrap;
+          animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+          from { width: 0; }
+          to { width: 100%; }
+      }
+
+      @keyframes blink-caret {
+          from, to { border-color: transparent; }
+          50% { border-color: #3b82f6; }
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+          width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+          background: #0f172a;
+      }
+
+      ::-webkit-scrollbar-thumb {
+          background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+          border-radius: 4px;
+      }
+
+      /* Floating animation */
+      .float {
+          animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+      }
+
+      /* Data visualization animation */
+      .data-stream {
+          position: absolute;
+          font-family: monospace;
+          font-size: 10px;
+          color: rgba(59, 130, 246, 0.3);
+          animation: stream-down 10s linear infinite;
+          white-space: nowrap;
+      }
+
+      @keyframes stream-down {
+          0% { transform: translateY(-100%); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(calc(100vh + 100%)); opacity: 0; }
+      }
+  </style>
+</head>
+<body>
+<div class="gradient-bg"></div>
+<div class="particles" id="particles"></div>
+<div class="cyber-grid"></div>
+
+<!-- Data streams background -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+  <div class="data-stream" style="left: 10%; animation-delay: 0s;">01001000 01100101 01101100 01101100 01101111</div>
+  <div class="data-stream" style="left: 30%; animation-delay: 2s;">import pandas as pd</div>
+  <div class="data-stream" style="left: 50%; animation-delay: 4s;">SELECT * FROM analytics</div>
+  <div class="data-stream" style="left: 70%; animation-delay: 6s;">df.groupby().agg()</div>
+  <div class="data-stream" style="left: 90%; animation-delay: 8s;">model.fit(X_train, y_train)</div>
+</div>
+
+<!-- Futuristic Navigation -->
+<header class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
+  <nav class="container mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="relative">
+          <div class="absolute inset-0 bg-blue-500 blur-xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+          <i class="ph-bold ph-chart-pie-slice text-3xl text-blue-400 relative z-10"></i>
+        </div>
+        <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            DataWizard.AI
+          </span>
+      </a>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#about" class="relative text-gray-300 hover:text-white transition-colors group">
+          <span>About</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#skills" class="relative text-gray-300 hover:text-white transition-colors group">
+          <span>Skills</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#projects" class="relative text-gray-300 hover:text-white transition-colors group">
+          <span>Projects</span>
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#contact" class="holo-btn text-white">
+          Connect
+        </a>
+      </div>
+
+      <button class="md:hidden relative w-10 h-10">
+        <span class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-20 blur-xl"></span>
+        <i class="ph-bold ph-list text-2xl text-white relative z-10"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="relative z-10">
+  <!-- Hero Section with 3D Elements -->
+  <section id="hero" class="min-h-screen flex items-center justify-center px-6 py-20">
+    <div class="container mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+          <div class="inline-flex items-center space-x-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/30 rounded-full px-4 py-2">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+            <span class="text-sm text-blue-300">Available for hire</span>
+          </div>
+
+          <h1 class="text-6xl md:text-7xl font-bold leading-tight">
+            <span class="block text-gray-400 text-2xl md:text-3xl mb-2">Hi, I'm a</span>
+            <span class="block glitch" data-text="Data Scientist">Data Scientist</span>
+            <span class="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+                & AI Engineer
+              </span>
+          </h1>
+
+          <p class="text-xl text-gray-400 leading-relaxed max-w-xl">
+            Transforming <span class="text-blue-400 font-semibold">raw data</span> into
+            <span class="text-purple-400 font-semibold">actionable insights</span> using
+            cutting-edge ML algorithms and distributed computing.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <button class="holo-btn group">
+                <span class="flex items-center space-x-2">
+                  <i class="ph-bold ph-download-simple"></i>
+                  <span>Download CV</span>
+                </span>
+            </button>
+
+            <a href="#projects" class="group relative px-8 py-4 bg-transparent border-2 border-gray-600 rounded-full overflow-hidden transition-all hover:border-blue-500">
+              <span class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+              <span class="relative flex items-center space-x-2 text-white">
+                  <span>View Projects</span>
+                  <i class="ph-bold ph-arrow-right transition-transform group-hover:translate-x-1"></i>
+                </span>
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex space-x-4 pt-4">
+            <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+              <span class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></span>
+              <span class="relative flex items-center justify-center w-full h-full bg-gray-800 rounded-lg border border-gray-700 group-hover:border-blue-500 transition-colors">
+                  <i class="ph-bold ph-github-logo text-xl"></i>
+                </span>
+            </a>
+            <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+              <span class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></span>
+              <span class="relative flex items-center justify-center w-full h-full bg-gray-800 rounded-lg border border-gray-700 group-hover:border-purple-500 transition-colors">
+                  <i class="ph-bold ph-linkedin-logo text-xl"></i>
+                </span>
+            </a>
+            <a href="#" class="group relative w-12 h-12 flex items-center justify-center">
+              <span class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg opacity-0 group-hover:opacity-100 blur-xl transition-opacity"></span>
+              <span class="relative flex items-center justify-center w-full h-full bg-gray-800 rounded-lg border border-gray-700 group-hover:border-pink-500 transition-colors">
+                  <i class="ph-bold ph-dribbble-logo text-xl"></i>
+                </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Visual Element -->
+        <div class="relative flex items-center justify-center">
+          <div class="relative w-96 h-96 float">
+            <!-- Rotating rings -->
+            <div class="absolute inset-0 rounded-full border-2 border-blue-500/20 animate-spin" style="animation-duration: 20s;"></div>
+            <div class="absolute inset-4 rounded-full border-2 border-purple-500/20 animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
+            <div class="absolute inset-8 rounded-full border-2 border-cyan-500/20 animate-spin" style="animation-duration: 10s;"></div>
+
+            <!-- Center content -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 blur-3xl opacity-50"></div>
+                <div class="relative bg-gray-900 p-8 rounded-2xl border border-gray-800 backdrop-blur-xl">
+                  <div class="text-center space-y-2">
+                    <div class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                      5+
+                    </div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wider">Years Experience</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating elements -->
+            <div class="absolute top-0 right-0 bg-blue-500/10 backdrop-blur-sm border border-blue-500/30 rounded-lg p-3 animate-bounce" style="animation-duration: 3s;">
+              <i class="ph-bold ph-python-logo text-2xl text-yellow-400"></i>
+            </div>
+            <div class="absolute bottom-0 left-0 bg-purple-500/10 backdrop-blur-sm border border-purple-500/30 rounded-lg p-3 animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">
+              <i class="ph-bold ph-brain text-2xl text-purple-400"></i>
+            </div>
+            <div class="absolute top-1/2 -right-4 bg-cyan-500/10 backdrop-blur-sm border border-cyan-500/30 rounded-lg p-3 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+              <i class="ph-bold ph-chart-line text-2xl text-cyan-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section with Animated Cards -->
+  <section id="about" class="py-24 px-6">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold mb-4">
+            <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              About My Expertise
+            </span>
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          Specializing in advanced analytics, machine learning, and big data technologies
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="neon-border group tilt-card">
+          <div class="neon-content text-center space-y-4">
+            <div class="relative inline-block">
+              <div class="absolute inset-0 bg-blue-500 blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative bg-gradient-to-br from-blue-500 to-blue-600 p-4 rounded-xl">
+                <i class="ph-bold ph-chart-bar text-4xl text-white"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Data Analysis</h3>
+            <p class="text-gray-400">
+              Expert in extracting insights from complex datasets using statistical methods and advanced visualization techniques.
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center pt-2">
+              <span class="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs text-blue-300">SQL</span>
+              <span class="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs text-blue-300">Statistics</span>
+              <span class="px-3 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs text-blue-300">Visualization</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="neon-border group tilt-card" style="animation-delay: 0.1s;">
+          <div class="neon-content text-center space-y-4">
+            <div class="relative inline-block">
+              <div class="absolute inset-0 bg-purple-500 blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative bg-gradient-to-br from-purple-500 to-purple-600 p-4 rounded-xl">
+                <i class="ph-bold ph-brain text-4xl text-white"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Machine Learning</h3>
+            <p class="text-gray-400">
+              Building and deploying predictive models using state-of-the-art algorithms and neural networks.
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center pt-2">
+              <span class="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-xs text-purple-300">TensorFlow</span>
+              <span class="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-xs text-purple-300">PyTorch</span>
+              <span class="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-xs text-purple-300">Scikit-learn</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="neon-border group tilt-card" style="animation-delay: 0.2s;">
+          <div class="neon-content text-center space-y-4">
+            <div class="relative inline-block">
+              <div class="absolute inset-0 bg-cyan-500 blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div class="relative bg-gradient-to-br from-cyan-500 to-cyan-600 p-4 rounded-xl">
+                <i class="ph-bold ph-database text-4xl text-white"></i>
+              </div>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Big Data</h3>
+            <p class="text-gray-400">
+              Processing massive datasets using distributed computing frameworks and cloud technologies.
+            </p>
+            <div class="flex flex-wrap gap-2 justify-center pt-2">
+              <span class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs text-cyan-300">Spark</span>
+              <span class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs text-cyan-300">Hadoop</span>
+              <span class="px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-xs text-cyan-300">AWS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section with Advanced Progress Bars -->
+  <section id="skills" class="py-24 px-6">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold mb-4">
+            <span class="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Technical Arsenal
+            </span>
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          My toolkit for transforming data into intelligence
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Languages & Frameworks -->
+        <div class="space-y-6">
+          <h3 class="text-2xl font-bold text-white mb-6">Languages & Frameworks</h3>
+
+          <div class="space-y-4">
+            <div class="group">
+              <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center space-x-3">
+                  <i class="ph-bold ph-python-logo text-2xl text-yellow-400"></i>
+                  <span class="font-semibold text-white">Python</span>
+                </div>
+                <span class="text-sm text-gray-400">95%</span>
+              </div>
+              <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full skill-load" style="width: 95%;">
+                  <div class="h-full bg-white/20 animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center space-x-3">
+                  <i class="ph-bold ph-lightning text-2xl text-purple-400"></i>
+                  <span class="font-semibold text-white">PySpark</span>
+                </div>
+                <span class="text-sm text-gray-400">88%</span>
+              </div>
+              <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-purple-400 to-pink-500 rounded-full skill-load" style="width:
