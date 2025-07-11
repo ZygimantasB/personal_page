@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analyst Portfolio | Futuristic Design</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+      /* Custom styles for the futuristic design */
+      body {
+          font-family: 'Inter', sans-serif;
+          background-color: #0f172a; /* Slate 900 */
+          color: #cbd5e1; /* Slate 300 */
+          overflow-x: hidden; /* Prevent horizontal scroll */
+      }
+
+      /* Aurora background effect */
+      body::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 25%),
+          radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 25%);
+          z-index: -1;
+          animation: move-aurora 20s infinite alternate;
+      }
+
+      @keyframes move-aurora {
+          0% { transform: translate(0, 0); }
+          100% { transform: translate(100px, 50px); }
+      }
+
+      .progress-bar-container {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 9999px;
+          height: 8px;
+      }
+      .progress-bar {
+          background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+          height: 100%;
+          border-radius: 9999px;
+      }
+      .section-title {
+          font-size: 2.5rem; /* 40px */
+          font-weight: 800;
+          text-align: center;
+          margin-bottom: 1rem;
+          color: #f8fafc; /* Slate 50 */
+      }
+      .section-subtitle {
+          font-size: 1.125rem; /* 18px */
+          color: #94a3b8; /* Slate 400 */
+          text-align: center;
+          max-width: 600px;
+          margin: 0 auto 3rem auto;
+      }
+
+      /* Glassmorphism Card Style */
+      .card {
+          background-color: rgba(30, 41, 59, 0.5); /* Slate 800 with 50% opacity */
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-radius: 0.75rem; /* 12px */
+          padding: 2rem;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      }
+      .card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 0 25px rgba(59, 130, 246, 0.2), 0 0 40px rgba(139, 92, 246, 0.2);
+          border-color: rgba(59, 130, 246, 0.5);
+      }
+
+      /* Gradient Text */
+      .gradient-text {
+          background: linear-gradient(90deg, #3b82f6, #a78bfa);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+      }
+
+      /* Scroll Animation */
+      .reveal {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .reveal.visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- Header / Navigation -->
+<header class="bg-slate-900/60 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-800">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="#" class="flex items-center space-x-2 text-xl font-bold text-white">
+      <i class="ph-bold ph-chart-pie-slice text-2xl text-blue-400"></i>
+      <span>DataAnalyst.dev</span>
+    </a>
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="#about" class="text-slate-300 hover:text-white transition-colors">About</a>
+      <a href="#skills" class="text-slate-300 hover:text-white transition-colors">Skills</a>
+      <a href="#projects" class="text-slate-300 hover:text-white transition-colors">Projects</a>
+      <a href="#contact" class="text-slate-300 hover:text-white transition-colors">Contact</a>
+    </div>
+    <button class="md:hidden text-slate-300 hover:text-white">
+      <i class="ph-bold ph-list text-2xl"></i>
+    </button>
+  </nav>
+</header>
+
+<main class="container mx-auto px-6 py-12 md:py-24">
+
+  <!-- Hero Section -->
+  <section id="home" class="grid md:grid-cols-2 gap-12 items-center min-h-[70vh]">
+    <div class="space-y-4 reveal">
+      <p class="text-lg text-blue-400 font-medium">Hello, I'm</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-slate-50">Python Data Analyst</h1>
+      <h2 class="text-2xl md:text-3xl font-bold gradient-text">Transforming Raw Data into Actionable Insights</h2>
+      <p class="text-slate-400 leading-relaxed max-w-lg">
+        Specialized in Python data analysis using Polars, Pandas, and PySpark. Building machine learning solutions and extracting meaningful patterns from complex datasets.
+      </p>
+      <div class="flex flex-wrap gap-4 pt-4">
+        <a href="#" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg inline-flex items-center space-x-2 hover:bg-blue-500 transition-all transform hover:scale-105 shadow-lg shadow-blue-600/20">
+          <i class="ph ph-download-simple"></i>
+          <span>Download Resume</span>
+        </a>
+        <a href="#contact" class="bg-slate-700 border border-slate-600 text-slate-200 font-semibold py-3 px-6 rounded-lg inline-flex items-center space-x-2 hover:bg-slate-600 hover:border-slate-500 transition-all transform hover:scale-105">
+          <i class="ph ph-paper-plane-tilt"></i>
+          <span>Get In Touch</span>
+        </a>
+      </div>
+    </div>
+    <div class="flex justify-center items-center reveal" style="transition-delay: 200ms;">
+      <div class="relative w-80 h-80 md:w-96 md:h-96 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-lg flex items-center justify-center">
+        <span class="text-slate-500">Professional Photo</span>
+        <div class="absolute top-4 right-4 bg-slate-900 text-white p-3 rounded-full border border-slate-700">
+          <i class="ph-bold ph-python-logo text-3xl text-yellow-400"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="py-24">
+    <h2 class="section-title reveal">About Me</h2>
+    <p class="section-subtitle reveal">Passionate data analyst with expertise in Python ecosystem for data manipulation and machine learning</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card text-center reveal">
+        <div class="inline-block bg-slate-700 p-4 rounded-lg mb-4">
+          <i class="ph-bold ph-chart-bar text-3xl text-blue-400"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-slate-100">Data Analysis</h3>
+        <p class="text-slate-400">Expert in extracting insights from large datasets using advanced statistical methods and visualization techniques.</p>
+      </div>
+      <div class="card text-center reveal" style="transition-delay: 200ms;">
+        <div class="inline-block bg-slate-700 p-4 rounded-lg mb-4">
+          <i class="ph-bold ph-brain text-3xl text-purple-400"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-slate-100">Machine Learning</h3>
+        <p class="text-slate-400">Building predictive models and implementing ML algorithms to solve complex business problems.</p>
+      </div>
+      <div class="card text-center reveal" style="transition-delay: 400ms;">
+        <div class="inline-block bg-slate-700 p-4 rounded-lg mb-4">
+          <i class="ph-bold ph-database text-3xl text-green-400"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-slate-100">Big Data</h3>
+        <p class="text-slate-400">Processing and analyzing large-scale datasets using distributed computing frameworks like PySpark.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills Section -->
+  <section id="skills" class="py-24">
+    <h2 class="section-title reveal">Technical Skills</h2>
+    <p class="section-subtitle reveal">My toolkit for data analysis and machine learning</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="card reveal"><div class="flex items-center justify-between mb-4"><div class="flex items-center space-x-3"><i class="ph-bold ph-python-logo text-3xl text-yellow-400"></i><h3 class="text-lg font-bold text-slate-100">Python</h3></div><span class="text-slate-400">95%</span></div><div class="progress-bar-container"><div class="progress-bar" style="width: 95%;"></div></div></div>
+      <div class="card reveal" style="transition-delay: 150ms;"><div class="flex items-center justify-between mb-4"><div class="flex items-center space-x-3"><i class="ph-bold ph-table text-3xl text-blue-400"></i><h3 class="text-lg font-bold text-slate-100">Pandas</h3></div><span class="text-slate-400">90%</span></div><div class="progress-bar-container"><div class="progress-bar" style="width: 90%;"></div></div></div>
+      <div class="card reveal" style="transition-delay: 300ms;"><div class="flex items-center justify-between mb-4"><div class="flex items-center space-x-3"><i class="ph-bold ph-lightning text-3xl text-purple-400"></i><h3 class="text-lg font-bold text-slate-100">Polars</h3></div><span class="text-slate-400">85%</span></div><div class="progress-bar-container"><div class="progress-bar" style="width: 85%;"></div></div></div>
+      <div class="card reveal" style="transition-delay: 450ms;"><div class="flex items-center justify-between mb-4"><div class="flex items-center space-x-3"><i class="ph-bold ph-sparkle text-3xl text-orange-400"></i><h3 class="text-lg font-bold text-slate-100">PySpark</h3></div><span class="text-slate-400">80%</span></div><div class="progress-bar-container"><div class="progress-bar" style="width: 80%;"></div></div></div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section -->
+  <section id="projects" class="py-24">
+    <h2 class="section-title reveal">Featured Projects</h2>
+    <p class="section-subtitle reveal">Recent data analysis and machine learning projects</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Project Card 1 -->
+      <div class="card reveal">
+        <div class="bg-slate-700/50 h-48 rounded-md mb-6 flex items-center justify-center text-slate-400 border border-slate-700">Sales Analytics Dashboard</div>
+        <h3 class="text-xl font-bold mb-2 text-slate-100">Sales Data Analysis</h3>
+        <p class="text-slate-400 mb-4">Comprehensive analysis of sales data using Pandas and visualization with Plotly.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">Pandas</span>
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">Plotly</span>
+        </div>
+        <div class="flex space-x-4 text-slate-400">
+          <a href="#" class="hover:text-blue-400 transition-colors"><i class="ph-bold ph-github-logo text-2xl"></i></a>
+          <a href="#" class="hover:text-blue-400 transition-colors"><i class="ph-bold ph-arrow-square-out text-2xl"></i></a>
+        </div>
+      </div>
+      <!-- Project Card 2 -->
+      <div class="card reveal" style="transition-delay: 200ms;">
+        <div class="bg-slate-700/50 h-48 rounded-md mb-6 flex items-center justify-center text-slate-400 border border-slate-700">ML Prediction Model</div>
+        <h3 class="text-xl font-bold mb-2 text-slate-100">Customer Churn Prediction</h3>
+        <p class="text-slate-400 mb-4">Machine learning model to predict customer churn using scikit-learn and feature engineering.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">Scikit-learn</span>
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">Pandas</span>
+        </div>
+        <div class="flex space-x-4 text-slate-400">
+          <a href="#" class="hover:text-blue-400 transition-colors"><i class="ph-bold ph-github-logo text-2xl"></i></a>
+          <a href="#" class="hover:text-blue-400 transition-colors"><i class="ph-bold ph-arrow-square-out text-2xl"></i></a>
+        </div>
+      </div>
+      <!-- Project Card 3 -->
+      <div class="card reveal" style="transition-delay: 400ms;">
+        <div class="bg-slate-700/50 h-48 rounded-md mb-6 flex items-center justify-center text-slate-400 border border-slate-700">Big Data Processing</div>
+        <h3 class="text-xl font-bold mb-2 text-slate-100">Real-time Data Pipeline</h3>
+        <p class="text-slate-400 mb-4">Large-scale data processing pipeline using PySpark for real-time analytics.</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">PySpark</span>
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">Kafka</span>
+          <span class="bg-slate-700 text-slate-300 text-xs font-semibold px-2.5 py-1 rounded-full">Docker</span>
+        </div>
+        <div class="flex space-x-4 text-slate-400">
+          <a href="#" class="hover:text-blue-400 transition-colors"><i class="ph-bold ph-github-logo text-2xl"></i></a>
+          <a href="#" class="hover:text-blue-400 transition-colors"><i class="ph-bold ph-arrow-square-out text-2xl"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24">
+    <h2 class="section-title reveal">Let's Work Together</h2>
+    <p class="section-subtitle reveal">Ready to turn your data into insights? Let's discuss your project.</p>
+    <div class="max-w-3xl mx-auto">
+      <div class="card reveal">
+        <form action="#" method="POST" class="space-y-6">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+              <input type="text" name="name" id="name" class="block w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-slate-100">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+              <input type="email" name="email" id="email" class="block w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-slate-100">
+            </div>
+          </div>
+          <div>
+            <label for="subject" class="block text-sm font-medium text-slate-300 mb-2">Subject</label>
+            <input type="text" name="subject" id="subject" class="block w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-slate-100">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+            <textarea id="message" name="message" rows="4" class="block w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-slate-100"></textarea>
+          </div>
+          <div class="text-center pt-4">
+            <button type="submit" class="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center space-x-2 hover:bg-blue-500 transition-all transform hover:scale-105 shadow-lg shadow-blue-600/20 w-full sm:w-auto">
+              <i class="ph ph-paper-plane-tilt"></i>
+              <span>Send Message</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-slate-900/50 border-t border-slate-800">
+  <div class="container mx-auto px-6 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-center md:text-left">
+        <a href="#" class="flex items-center justify-center md:justify-start space-x-2 text-xl font-bold text-white">
+          <i class="ph-bold ph-chart-pie-slice text-2xl text-blue-400"></i>
+          <span>DataAnalyst.dev</span>
+        </a>
+        <p class="mt-2 text-sm text-slate-400">&copy; 2025 All rights reserved.</p>
+      </div>
+      <div class="flex space-x-6 text-slate-400">
+        <a href="#" class="hover:text-white transition-colors"><i class="ph-bold ph-linkedin-logo text-2xl"></i></a>
+        <a href="#" class="hover:text-white transition-colors"><i class="ph-bold ph-github-logo text-2xl"></i></a>
+        <a href="#" class="hover:text-white transition-colors"><i class="ph-bold ph-twitter-logo text-2xl"></i></a>
+        <a href="#" class="hover:text-white transition-colors"><i class="ph-bold ph-envelope text-2xl"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript for Scroll Animations -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const elementsToReveal = document.querySelectorAll('.reveal');
+        elementsToReveal.forEach(el => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+</body>
+</html>
